@@ -12,7 +12,7 @@ const recipeContainer = document.querySelector('.recipe');
 const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1);
-    console.log(id);
+    // console.log(id);
 
     if (!id) return;
     recipeView.renderSpinder();
@@ -27,8 +27,21 @@ const controlRecipes = async function () {
     recipeView.renderError();
   }
 };
-// controlRecipes();
+
+const controlSearchResults = async function () {
+  try {
+    await model.loadSearchResults('pizza');
+    console.log(model.state.search.results);
+  } catch (err) {
+    console.log(err);
+  }
+};
+controlSearchResults();
+
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
 };
 init();
+
+// const data1 = model.loadSearchResult('pizza');
+// console.log(data1);
