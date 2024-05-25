@@ -1,16 +1,19 @@
 import * as model from './module.js';
 import recipeView from './views/recipeView.js';
-// import 'core-js/stable';
-// import 'regenerator-runtime/runtime';
+import searchView from './views/searchView.js';
+import resultView from './views/resultView.js';
 
-const recipeContainer = document.querySelector('.recipe');
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+import { async } from 'regenerator-runtime';
 
-// https://forkify-api.herokuapp.com/v2
-
-///////////////////////////////////////
+if (module.hot) {
+  module.hot.accept();
+}
 
 const controlRecipes = async function () {
   try {
+    // resultView.renderSpinder();
     const id = window.location.hash.slice(1);
     // console.log(id);
 
@@ -30,18 +33,26 @@ const controlRecipes = async function () {
 
 const controlSearchResults = async function () {
   try {
-    await model.loadSearchResults('pizza');
+    // 1) Get search query
+    const query = searchView.getQuery();
+    if (!query) return;
+
+    // 2) Load search results
+    await model.loadSearchResults(query);
+
+    // 3) Render results
     console.log(model.state.search.results);
+    resultView.render(model.state.search.results);
   } catch (err) {
     console.log(err);
   }
 };
-controlSearchResults();
+// controlSearchResults();
 
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
+  searchView.addHandlerSearch(controlSearchResults);
 };
 init();
 
-// const data1 = model.loadSearchResult('pizza');
-// console.log(data1);
+console.log('Helo word');
