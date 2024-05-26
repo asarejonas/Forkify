@@ -44,7 +44,7 @@ const controlSearchResults = async function () {
     // 3) Render results
     // resultView.render(model.state.search.results);
     // console.log()
-    resultView.render(model.getSearchResultPage(4));
+    resultView.render(model.getSearchResultPage(1));
 
     // 4) Render intial pagination buttons
     paginationView.render(model.state.search);
@@ -53,11 +53,20 @@ const controlSearchResults = async function () {
   }
 };
 
+const controlPagination = function (value = 'there was a value here') {
+  // 1) Render New result
+  resultView.render(model.getSearchResultPage(value));
+
+  // 2) Render New pagination buttons
+  paginationView.render(model.state.search);
+
+  // console.log(`${value} this value was form the controler`);
+  // console.log('hello Word from the handler!!!');
+};
+
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
   searchView.addHandlerSearch(controlSearchResults);
+  paginationView.addHandlerClick(controlPagination);
 };
 init();
-
-// console.log(pagination._generateMarkup);
-// paginationView.render(model.state.search);
