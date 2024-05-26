@@ -53,15 +53,12 @@ const controlSearchResults = async function () {
   }
 };
 
-const controlPagination = function (value = 'there was a value here') {
+const controlPagination = function (gotoPage) {
   // 1) Render New result
-  resultView.render(model.getSearchResultPage(value));
+  resultView.render(model.getSearchResultPage(gotoPage));
 
   // 2) Render New pagination buttons
   paginationView.render(model.state.search);
-
-  // console.log(`${value} this value was form the controler`);
-  // console.log('hello Word from the handler!!!');
 };
 
 const init = function () {
