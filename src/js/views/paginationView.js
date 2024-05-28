@@ -12,7 +12,6 @@ class PaginationView extends Views {
       if (!btn) return;
 
       const goToPage = +btn.dataset.goto;
-      // console.log(goToPage);
 
       handler(goToPage);
     });
@@ -43,7 +42,7 @@ class PaginationView extends Views {
     <svg class="search__icon">
       <use href="${icons}#icon-arrow-left"></use>
     </svg>
-    <span>${curPage - 1}</span>
+    <span>Page ${curPage - 1}</span>
   </button>`;
 
     //Other page
@@ -53,7 +52,7 @@ class PaginationView extends Views {
     <svg class="search__icon">
       <use href="${icons}#icon-arrow-left"></use>
     </svg>
-    <span>${curPage - 1}</span>
+    <span>Page ${curPage - 1}</span>
   </button>
   
   <button data-goto="${curPage + 1}" class="btn--inline pagination__btn--next">
