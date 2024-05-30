@@ -14,12 +14,13 @@ if (module.hot) {
 
 const controlRecipes = async function () {
   try {
-    // resultView.renderSpinder();
     const id = window.location.hash.slice(1);
-    // console.log(id);
 
     if (!id) return;
     recipeView.renderSpinder();
+
+    // 0) Update results view to mark selected
+    resultView.update(model.getSearchResultPage());
 
     // 1) Loading recipe
     await model.loadRecipe(id);
