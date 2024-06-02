@@ -105,3 +105,7 @@ const init = function () {
   if (storage) state.bookmarks = JSON.parse(storage);
 };
 init();
+
+export const uploadRecipe = async function (newRecipe) {
+  const ingredients = Object;
+};
