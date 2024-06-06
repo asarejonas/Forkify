@@ -137,4 +137,5 @@ const clearBookmarks = function () {
   localStorage.clear('bookmarks');
 };
 
+console.log('The application is live');
 // clearBookmarks();
