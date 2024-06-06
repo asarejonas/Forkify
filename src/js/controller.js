@@ -138,4 +138,6 @@ const clearBookmarks = function () {
 };
 
 console.log('The application is live');
+console.log('Error was fix');
+
 // clearBookmarks();
